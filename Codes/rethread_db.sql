@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 25, 2020 at 09:41 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Host: localhost: 3306
+-- Waktu pembuatan: 13 Jun 2023 pada 11.00
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,23 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecom_db`
+-- Database: `rethread_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `cat_id` int(11) NOT NULL,
   `cat_title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
@@ -45,15 +44,15 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 (16, 'Machinery'),
 (17, 'Home & Garden'),
 (18, 'Beauty & Personal Care'),
-(19, 'Agriculture & Food');
+(19, 'Agriculture & Food'),
+(20, 'Men');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Struktur dari tabel `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `order_amount` float NOT NULL,
@@ -63,7 +62,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Dumping data untuk tabel `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `order_amount`, `order_transaction`, `order_status`, `order_currency`) VALUES
@@ -110,10 +109,9 @@ INSERT INTO `orders` (`order_id`, `order_amount`, `order_transaction`, `order_st
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Struktur dari tabel `products`
 --
 
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
   `product_title` varchar(255) NOT NULL,
@@ -126,7 +124,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `products`
+-- Dumping data untuk tabel `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_title`, `product_category_id`, `product_price`, `product_quantity`, `product_description`, `short_desc`, `product_image`) VALUES
@@ -170,10 +168,9 @@ INSERT INTO `products` (`product_id`, `product_title`, `product_category_id`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Struktur dari tabel `reports`
 --
 
-DROP TABLE IF EXISTS `reports`;
 CREATE TABLE `reports` (
   `report_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -184,7 +181,7 @@ CREATE TABLE `reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reports`
+-- Dumping data untuk tabel `reports`
 --
 
 INSERT INTO `reports` (`report_id`, `product_id`, `order_id`, `product_price`, `product_title`, `product_quantity`) VALUES
@@ -210,10 +207,9 @@ INSERT INTO `reports` (`report_id`, `product_id`, `order_id`, `product_price`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slides`
+-- Struktur dari tabel `slides`
 --
 
-DROP TABLE IF EXISTS `slides`;
 CREATE TABLE `slides` (
   `slide_id` int(11) NOT NULL,
   `slide_title` varchar(255) NOT NULL,
@@ -221,7 +217,7 @@ CREATE TABLE `slides` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `slides`
+-- Dumping data untuk tabel `slides`
 --
 
 INSERT INTO `slides` (`slide_id`, `slide_title`, `slide_image`) VALUES
@@ -237,10 +233,9 @@ INSERT INTO `slides` (`slide_id`, `slide_title`, `slide_image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -250,93 +245,91 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `user_photo`) VALUES
-(1, 'tendai', 'tendai@gmail.com', '1234', ''),
-(2, 'ashley', 'ashley@support.com', '1234', ''),
-(4, 'ashy', 'tendai@business.com', '1234', '');
+(5, 'admin', 'admin@gmail.com', 'password', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`cat_id`);
 
 --
--- Indexes for table `orders`
+-- Indeks untuk tabel `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`);
 
 --
--- Indexes for table `products`
+-- Indeks untuk tabel `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Indexes for table `reports`
+-- Indeks untuk tabel `reports`
 --
 ALTER TABLE `reports`
   ADD PRIMARY KEY (`report_id`);
 
 --
--- Indexes for table `slides`
+-- Indeks untuk tabel `slides`
 --
 ALTER TABLE `slides`
   ADD PRIMARY KEY (`slide_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
--- AUTO_INCREMENT for table `reports`
+-- AUTO_INCREMENT untuk tabel `reports`
 --
 ALTER TABLE `reports`
   MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `slides`
+-- AUTO_INCREMENT untuk tabel `slides`
 --
 ALTER TABLE `slides`
   MODIFY `slide_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
