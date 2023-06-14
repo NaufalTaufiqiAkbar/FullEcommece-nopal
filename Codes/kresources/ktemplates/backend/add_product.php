@@ -37,10 +37,10 @@
     </div>
 
 
-    <div class="form-group">
+    <!-- <div class="form-group">
            <label for="product-title">Product Short Description</label>
       <textarea name="short_desc" id="" cols="30" rows="3" class="form-control"></textarea>
-    </div>
+    </div> -->
 
     
     

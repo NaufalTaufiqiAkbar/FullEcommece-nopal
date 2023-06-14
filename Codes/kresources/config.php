@@ -4,17 +4,6 @@ ob_start();
 //session starting
 session_start();
 
-
-
-//************************************************************************
-//(i)session ending "by the way there are predefined in the system" 
-//(ii)usually used for debugging  purposes
-//NOTE:BE CAREFUL WITH THIS FUNCTION
-//session_destroy();
-//************************************************************************
-
-
-
 //########################################################
 //files information
 defined("DS")?null:define("DS",DIRECTORY_SEPARATOR);

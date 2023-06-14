@@ -422,7 +422,6 @@ echo $category_options;
 }
 //***************************************************Updating Products Code In Admin Page  ***************************************
 function update_product(){
-    // not fully functioning as a function yet, still bugs in the EDIT PAGE of the ADMIN PAGE!!!!!
     if(isset($_POST['update'])) {
         $product_title = escape_string($_POST['product_title']);
         $product_category_id = escape_string($_POST['product_category_id']);
@@ -540,11 +539,6 @@ $username   = escape_string($_POST['username']);
 $email      = escape_string($_POST['email']);
 $password   = escape_string($_POST['password']);
 $user_photo = $_FILES['file']['name'];
-//$photo_temp = escape_string($_FILES['file']['tmp_name']);
-//$final_destination = UPLOAD_DIRECTORY . DS . $user_photo;
-
- //move_uploaded_file($photo_temp,$final_destination);
-
 
 $query = query("INSERT INTO users(username,email,password) VALUES('{$username}','{$email}','{$password}')");
 confirm($query);

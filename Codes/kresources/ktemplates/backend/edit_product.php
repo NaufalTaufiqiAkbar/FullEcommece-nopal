@@ -149,10 +149,10 @@ function extra_image(){
     </div>
 
 
-    <div class="form-group">
+    <!-- <div class="form-group">
            <label for="product-title">Product Short Description</label>
       <textarea name="short_desc" id="" cols="30" rows="3" class="form-control"><?php echo extra_short_desc(); ?></textarea>
-    </div>
+    </div> -->
 
     
     
@@ -180,8 +180,6 @@ function extra_image(){
             <option value="<?php echo $product_category_id;?>"><?php echo show_product_category_title($product_category_id);?></option>
            <?php show_categories_add_product(); ?>
         </select>
-
-
 </div>
 
 
